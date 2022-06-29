@@ -8,14 +8,17 @@ app.get('/', (req, res) => {
 app.get('/hello', (req, res) => {
     res.send("Hello, my friend!");
 });
-
-app.get(['/goodbye', '/goodbye/*'], (req, res) => {
-    res.send("Goodbye, my friend!");
-});
-
+git 
 app.get('/goodbye/until/:time', (req, res) => {
     res.send(`Goodbye. See you ${req.params.time}.`);
 });
+
+app.get(['/goodbye', '/goodbye/*'], (req, res, next) => {
+    res.send("Goodbye, my friend!");
+    next();
+});
+
+
 
 app.get('/goodbye/until/forever', (req, res) => {
     res.send("So long. Farewell. Have a great life!");
