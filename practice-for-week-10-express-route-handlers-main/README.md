@@ -2,24 +2,24 @@
 
 In this practice, you will create an Express server with basic Express routes.
 
-You will be focusing on the routing, so when needed seed data and other code 
+You will be focusing on the routing, so when needed seed data and other code
 will be provided (phase 2).
 
 Follow the steps outlined below to complete both phases:
 
-* Handle JSON In Request (Basic)
-* Create Route Handlers (Basic)
+- Handle JSON In Request (Basic)
+- Create Route Handlers (Basic)
 
 ## Getting started
 
 Download the starter. When you open it, you'll find there is a very simple
 `app.js` file that is only the setup of an Express application.
 
-Also, there is a folder, __seeds__ that contain seed data for three entities:
+Also, there is a folder, **seeds** that contain seed data for three entities:
 artists, albums, and songs. You will be creating API endpoints for these
 entities later in this practice.
 
-The __data.js__ file exports multiple functions that execute different
+The **data.js** file exports multiple functions that execute different
 actions on the three entities with varying parameters. You will use these
 functions in the route handlers that you will create later in this practice
 (phase 2).
@@ -72,14 +72,14 @@ To test this set up, add these lines of code right after
 
 ```js
 app.use((req, res, next) => {
-  console.log('Body:', req.body);
+  console.log("Body:", req.body);
   next();
 });
 ```
 
-Then start the server and use Postman to make a request to `POST /` with any 
-JSON body. You should see the body contents logged to the server console. If you 
-see`Body: undefined`, then you set the boilerplate code incorrectly. Please 
+Then start the server and use Postman to make a request to `POST /` with any
+JSON body. You should see the body contents logged to the server console. If you
+see`Body: undefined`, then you set the boilerplate code incorrectly. Please
 review the setup.
 
 ## Basic Phase 2: Create Route Handlers
@@ -87,14 +87,14 @@ review the setup.
 In this phase, you will create endpoints in the Express server.
 
 Using the following API documentation, create Express route handlers in the
-__app.js__ file. Use Postman to test each route as you write it.
+**app.js** file. Use Postman to test each route as you write it.
 
 The actions that need to be executed in the endpoints are all exported from the
-__data.js__ file. In a route handler specific to each endpoint, you should send
+**data.js** file. In a route handler specific to each endpoint, you should send
 a JSON response of the serialized data returned from the referenced function.
 For example, to return a JSON array of all artists in the server data for a
 request to `GET /artists`, you should use the data from `getAllArtists()`
-function exported from the __data.js__ file.
+function exported from the **data.js** file.
 
 ### Get all the artists
 
@@ -109,9 +109,9 @@ Response components:
 
 - Status Code: 200
 - Headers:
-    - Content-Type: application/json
+  - Content-Type: application/json
 - Body: information about all the artists
-  (returned from `getAllArtists()` function exported from __data.js__)
+  (returned from `getAllArtists()` function exported from **data.js**)
 
   ```json
   [
@@ -128,7 +128,7 @@ Request components:
 
 - Method: POST
 - URL: /artists
-    - Content-Type: application/json
+  - Content-Type: application/json
 - Body: information about the artist to be created
 
   ```json
@@ -144,9 +144,9 @@ For setting the status code to `201` instead of the default `200`, call
 
 - Status Code: 201
 - Headers:
-    - Content-Type: application/json
+  - Content-Type: application/json
 - Body: information about the newly created artist
-  (returned from `addArtist(data)` function exported from __data.js__)
+  (returned from `addArtist(data)` function exported from **data.js**)
 
   ```json
   {
