@@ -129,5 +129,41 @@ app.post('/artist/:artistId/albums', (req, res) =>{
 
 })
 
+// Get all albums with names filtered by first letter
+app.get('/albums', (req, res)=>{
+  res.status(200)
+  res.json(getFilteredAlbums(req.query.startsWith))
+});
+
+// Get all songs of a specific artist based on artistId
+app.get('/artists/:artistId/songs', (req, res)=>{
+  res.status(200)
+  res.json(getSongsByArtistId(req.params.artistId))
+});
+
+// Get all songs of a specific album based on albumId
+app.get('/albums/:albumId/songs', (req, res)=>{
+  res.status(200)
+  res.json(getSongsByAlbumId(req.params.albumId) )
+});
+
+// Get a specific song's details based on songId
+app.get('/songs/:songId', (req, res)=>{
+  res.status(200)
+  res.json( getSongBySongId(req.params.songId))
+});
+
+// Add a song to a specific album based on albumId
+app.post('/albums/:albumId/songs', (req, res)=>{
+  res.status(201)
+  req.body = {
+    "name": "Dani California",
+    "trackNumber": 1,
+    "lyrics": "...",
+    "albumId": 1
+  }
+  res.json(addSongByAlbumId(req.params.albumId, req.body))
+});
+
 const port = 5000;
 app.listen(port, () => console.log('Server is listening on port', port));
