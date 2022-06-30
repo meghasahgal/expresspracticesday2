@@ -165,5 +165,26 @@ app.post('/albums/:albumId/songs', (req, res)=>{
   res.json(addSongByAlbumId(req.params.albumId, req.body))
 });
 
+//Edit a specified song by songId
+
+app.patch('/songs/:songId', (req, res)=>{
+  res.status(200)
+  req.body = {
+    "name": "Dani California",
+    "trackNumber": 1,
+    "lyrics": "..."
+  }
+  res.json(editSongBySongId(req.params.songId, req.body))
+})
+
+// Delete a specified song by songId
+
+app.delete('/songs/:songId', (req, res)=>{
+  res.status(200)
+  res.json({"message" : "Successfully deleted"})
+})
+
+//
+
 const port = 5000;
 app.listen(port, () => console.log('Server is listening on port', port));
