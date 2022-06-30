@@ -100,9 +100,34 @@ app.put('/artists/:artistId', (req, res) => {
   res.json(editArtistByArtistId(req.params.artistId, req.body));
 });
 
+//### Delete a specified artist by artistId
+app.delete('/artists/:artistId', (req, res) =>{
+  res.status(200)
+  res.json({"message": "Sucessfully deleted."})
+})
 
+//### Get all albums of a specific artist based on artistId
+app.get('/artists/:artistId/albums', (req, res) =>{
+  res.status(200)
+  res.json(getAlbumsByArtistId(req.params.artistId))
+})
 
+//Get a specific album's details based on albumId
 
+app.get('/albums/:albumId', (req, res)=>{
+  res.status(200)
+  res.json(getAlbumByAlbumId(req.params.albumId))
+})
+
+//Add an album to a specific artist based on artistId
+app.post('/artist/:artistId/albums', (req, res) =>{
+  res.status(201)
+  // req.body = {
+  //     "name": "Stadium Arcadium"
+  // }
+  res.json(addAlbumByArtistId(req.params.artistId, req.body))
+
+})
 
 const port = 5000;
 app.listen(port, () => console.log('Server is listening on port', port));
