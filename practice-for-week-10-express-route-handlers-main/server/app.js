@@ -76,5 +76,33 @@ app.get('/artists/latest/albums', (req, res, next)=>{
 //     }
 // }
 
+// Get the latest artist added.
+app.get('/artists/latest', (req, res) => {
+  res.status(200);
+  res.json(getLatestArtist());
+});
+
+// Get all albums of the latest artist.
+app.get('/artists/latest/albums', (req, res) => {
+  res.status(200);
+  res.json(getAlbumsForLatestArtist());
+});
+
+// Get a specific artist's details based on artistId
+app.get('/artists/:artistId', (req, res) => {
+  res.status(200);
+  res.json(getArtistByArtistId(req.params.artistId));
+});
+
+// Edit a specified artist by artistId
+app.put('/artists/:artistId', (req, res) => {
+  res.status(200);
+  res.json(editArtistByArtistId(req.params.artistId, req.body));
+});
+
+
+
+
+
 const port = 5000;
 app.listen(port, () => console.log('Server is listening on port', port));
